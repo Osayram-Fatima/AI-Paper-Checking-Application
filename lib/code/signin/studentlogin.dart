@@ -1,17 +1,17 @@
-import 'package:ai_paper_checking/code/signin/studentlogin.dart';
+import 'package:ai_paper_checking/code/signin/teacherlogin.dart';
 import 'package:ai_paper_checking/code/signup/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class TeacherLogin extends StatefulWidget {
-  const TeacherLogin({super.key});
+class StudentLogin extends StatefulWidget {
+  const StudentLogin({super.key});
 
   @override
-  State<TeacherLogin> createState() => _TeacherLoginState();
+  State<StudentLogin> createState() => _StudentLoginState();
 }
 
-class _TeacherLoginState extends State<TeacherLogin> {
-  bool isTeacher = true;
+class _StudentLoginState extends State<StudentLogin> {
+  bool isStudent = true; // Student tab active by default
   bool _passwordVisible = false;
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -44,11 +44,11 @@ class _TeacherLoginState extends State<TeacherLogin> {
       backgroundColor: const Color(0xffF5F6FA),
       body: Stack(
         children: [
-          // Background decorative circles
-          Positioned(top: -120, left: -80, child: _buildCircle(320)),
-          Positioned(top: -100, right: -100, child: _buildCircle(320)),
-          Positioned(bottom: -30, left: -30, child: _buildCircle(170)),
-          Positioned(bottom: 120, left: 100, child: _buildCircle(60)),
+          // Background decorative circles (horizontally mirrored layout)
+          Positioned(top: -120, right: -80, child: _buildCircle(320)),
+          Positioned(top: -100, left: -100, child: _buildCircle(320)),
+          Positioned(bottom: -30, right: -30, child: _buildCircle(170)),
+          Positioned(bottom: 120, right: 100, child: _buildCircle(60)),
 
           SafeArea(
             child: SingleChildScrollView(
@@ -65,17 +65,17 @@ class _TeacherLoginState extends State<TeacherLogin> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        _buildTab("Teacher", isTeacher, () {
-                          setState(() => isTeacher = true);
-                        }),
-                        const SizedBox(width: 35),
-                        _buildTab("Student", !isTeacher, () {
-                          Navigator.push(
+                        _buildTab("Teacher", !isStudent, () {
+                          Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const StudentLogin(),
+                              builder: (context) => const TeacherLogin(),
                             ),
                           );
+                        }),
+                        const SizedBox(width: 35),
+                        _buildTab("Student", isStudent, () {
+                          setState(() => isStudent = true);
                         }),
                       ],
                     ),
@@ -126,7 +126,7 @@ class _TeacherLoginState extends State<TeacherLogin> {
                           ],
                         ),
                         child: ElevatedButton(
-                          onPressed: () => _handleTeacherLogin(context),
+                          onPressed: () => _handleStudentLogin(context),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.transparent,
                             shadowColor: Colors.transparent,
@@ -193,8 +193,8 @@ class _TeacherLoginState extends State<TeacherLogin> {
     );
   }
 
-  // Teacher login handler — add your validation/navigation logic here
-  void _handleTeacherLogin(BuildContext context) {
+  // Student login handler — add your validation/navigation logic here
+  void _handleStudentLogin(BuildContext context) {
     final email = _emailController.text.trim();
     final password = _passwordController.text.trim();
 
@@ -208,10 +208,10 @@ class _TeacherLoginState extends State<TeacherLogin> {
       return;
     }
 
-    // TODO: Navigate to TeacherDashboard after successful login
+    // TODO: Navigate to StudentDashboard after successful login
     // Navigator.pushReplacement(
     //   context,
-    //   MaterialPageRoute(builder: (context) => const TeacherDashboard()),
+    //   MaterialPageRoute(builder: (context) => const StudentDashboard()),
     // );
   }
 
@@ -291,7 +291,7 @@ class _TeacherLoginState extends State<TeacherLogin> {
           : TextInputType.emailAddress,
       style: GoogleFonts.raleway(
         fontSize: 14,
-        color: const Color(0xFF2B3A6B),
+        color: const Color(0xFF0A194C),
         fontWeight: FontWeight.w500,
         letterSpacing: 1.2,
       ),

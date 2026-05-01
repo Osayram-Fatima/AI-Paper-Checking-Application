@@ -1,11 +1,10 @@
+import 'package:ai_paper_checking/code/signin/studentlogin.dart';
 import 'package:ai_paper_checking/code/signin/teacherlogin.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../components/gradient_button.dart';
 import '../components/student_button.dart';
-import '../signup/signupteacher.dart'; // ✅ Correct filename
-import '../signup/signupstudent.dart'; // ✅ Correct filename
 
 class SigninScreen extends StatelessWidget {
   const SigninScreen({super.key});
@@ -80,7 +79,7 @@ class SigninScreen extends StatelessWidget {
                         onPressed: () => Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (_) => const SignupStudentScreen(),
+                            builder: (_) => const StudentLogin(),
                           ),
                         ),
                       ),
