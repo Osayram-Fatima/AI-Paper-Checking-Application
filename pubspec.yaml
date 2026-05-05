@@ -92,3 +92,4 @@ flutter:
   assets:
     - lib/assets/welcome_screen/
     - lib/assets/signup_signin/
+    - lib/assets/icons/nav/

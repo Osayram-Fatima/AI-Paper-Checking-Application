@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'code/welcome/welcome_screen.dart'; // Import your custom screen
+import 'code/onboarding/onboarding_screen1.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Awesome App',
+      title: 'AI Paper Checking App',
       theme: ThemeData(
         // Set a default theme, but we'll mostly use custom colors
         primarySwatch: Colors.blue,

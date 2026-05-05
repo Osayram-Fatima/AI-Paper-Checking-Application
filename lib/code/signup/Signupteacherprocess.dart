@@ -1,4 +1,6 @@
 import 'package:ai_paper_checking/code/signin/signin.dart';
+import 'package:ai_paper_checking/code/onboarding/onboarding_screen1.dart'; // ✅ ADD
+import 'package:ai_paper_checking/code/session/user_session.dart'; // ✅ ADD
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -18,7 +20,6 @@ class _SignupTeacherProcessState extends State<SignupTeacherProcess> {
 
   bool _passwordVisible = false;
   String? _selectedRole;
-  bool _isLoginVisible = false; // ✅ Added for login toggle
 
   @override
   void dispose() {
@@ -28,6 +29,53 @@ class _SignupTeacherProcessState extends State<SignupTeacherProcess> {
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
+  }
+
+  // ✅ Validation + Navigation
+  void _onNextPressed() {
+    final firstName = _firstNameController.text.trim();
+    final lastName = _lastNameController.text.trim();
+    final cnic = _cnicController.text.trim();
+    final email = _emailController.text.trim();
+    final password = _passwordController.text.trim();
+
+    UserSession.firstName = firstName;
+    UserSession.lastName = lastName;
+    UserSession.email = email;
+    UserSession.cnic = cnic;
+
+    // ── Validation ──
+    if (firstName.isEmpty ||
+        lastName.isEmpty ||
+        cnic.isEmpty ||
+        email.isEmpty ||
+        password.isEmpty ||
+        _selectedRole == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            'Please fill all fields and select a role',
+            style: GoogleFonts.raleway(color: Colors.white),
+          ),
+          backgroundColor: const Color(0xFF1E3A8A),
+          behavior: SnackBarBehavior.floating,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+        ),
+      );
+      return;
+    }
+
+    // ✅ Role save karo UserSession mein
+    UserSession.role = _selectedRole!.toLowerCase(); // 'teacher' or 'student'
+
+    // ✅ Onboarding screen 1 pe navigate karo
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(builder: (_) => const OnboardingScreen1()),
+      (route) => false,
+    );
   }
 
   // ── Text Field ──
@@ -92,7 +140,7 @@ class _SignupTeacherProcessState extends State<SignupTeacherProcess> {
     );
   }
 
-  // ── Spinner — same style as fields ──
+  // ── Role Spinner ──
   Widget _buildRoleSpinner() {
     return DropdownButtonFormField<String>(
       value: _selectedRole,
@@ -151,7 +199,7 @@ class _SignupTeacherProcessState extends State<SignupTeacherProcess> {
     );
   }
 
-  // ✅ NEW METHOD - Already have account toggle
+  // ── Already have account ──
   Widget _buildLoginToggle() {
     return GestureDetector(
       onTap: () {
@@ -343,9 +391,7 @@ class _SignupTeacherProcessState extends State<SignupTeacherProcess> {
                               ],
                             ),
                             child: TextButton(
-                              onPressed: () {
-                                // TODO: next screen navigation
-                              },
+                              onPressed: _onNextPressed, // ✅ FIXED
                               style: TextButton.styleFrom(
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(30),
@@ -366,7 +412,6 @@ class _SignupTeacherProcessState extends State<SignupTeacherProcess> {
 
                         const SizedBox(height: 24),
 
-                        // ✅ Already have account line - NEW
                         _buildLoginToggle(),
 
                         const SizedBox(height: 20),

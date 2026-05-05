@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-
 import '../components/gradient_button.dart';
 import '../components/student_button.dart';
-import '../signup/signupteacher.dart'; // ✅ Correct filename
-import '../signup/signupstudent.dart'; // ✅ Correct filename
+import '../signup/signupteacher.dart';
+import '../signup/signupstudent.dart';
+import '../session/user_session.dart'; // ✅ ADDED
 
 class SignupScreen extends StatelessWidget {
   const SignupScreen({super.key});
@@ -24,13 +23,11 @@ class SignupScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // ── BACK Icon (Updated) ──
+              // ── BACK Icon ──
               Padding(
                 padding: const EdgeInsets.only(top: 8, left: 24.0),
                 child: GestureDetector(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
+                  onTap: () => Navigator.pop(context),
                   child: Container(
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
@@ -50,38 +47,44 @@ class SignupScreen extends StatelessWidget {
                   ),
                 ),
               ),
+
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.only(
-                    top: 250,
-                    left: 60,
-                    right: 60,
-                  ), // ✅ Top spacing control
+                  padding: const EdgeInsets.only(top: 250, left: 60, right: 60),
                   child: Column(
-                    mainAxisAlignment:
-                        MainAxisAlignment.start, // ✅ TOP par aayenge
-                    crossAxisAlignment:
-                        CrossAxisAlignment.stretch, // ✅ Full width
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      const SizedBox(height: 20), // ✅ Extra top space
+                      const SizedBox(height: 20),
+
+                      // ── Teacher Button ──
                       GradientButton(
                         text: 'Sign up as a Teacher',
-                        onPressed: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (_) => const SignupTeacherScreen(),
-                          ),
-                        ),
+                        onPressed: () {
+                          UserSession.role = 'teacher'; // ✅ Role set
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => const SignupTeacherScreen(),
+                            ),
+                          );
+                        },
                       ),
+
                       const SizedBox(height: 20),
+
+                      // ── Student Button ──
                       StudentButton(
                         text: 'Sign up as a Student',
-                        onPressed: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (_) => const SignupStudentScreen(),
-                          ),
-                        ),
+                        onPressed: () {
+                          UserSession.role = 'student'; // ✅ Role set
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => const SignupStudentScreen(),
+                            ),
+                          );
+                        },
                       ),
                     ],
                   ),

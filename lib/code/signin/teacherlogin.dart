@@ -135,7 +135,7 @@ class _TeacherLoginState extends State<TeacherLogin> {
                             ),
                           ),
                           child: Text(
-                            "Log-IN",
+                            "Log-in",
                             style: GoogleFonts.raleway(
                               color: Colors.white,
                               fontSize: 17,
