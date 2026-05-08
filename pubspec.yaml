@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   google_fonts: ^8.0.2
   animated_text_kit: ^4.3.0
+  flutter_svg: ^2.0.10+1
 
 dev_dependencies:
   flutter_test:
@@ -93,3 +94,6 @@ flutter:
     - lib/assets/welcome_screen/
     - lib/assets/signup_signin/
     - lib/assets/icons/nav/
+    - lib/assets/dashboardbg/
+    - lib/assets/icons/menu_notification/
+    - lib/assets/icons/add_class/

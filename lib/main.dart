@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'code/welcome/welcome_screen.dart'; // Import your custom screen
 import 'code/onboarding/onboarding_screen1.dart';
+import 'code/signup/signup.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         useMaterial3: true,
       ),
-      home: const WelcomeScreen(), // Set your custom screen as the home
+      home: const SignupScreen(), // Set your custom screen as the home
       debugShowCheckedModeBanner: false, // Hide the debug banner
     );
   }

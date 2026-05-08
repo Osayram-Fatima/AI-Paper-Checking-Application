@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'onboarding_config.dart';
 import '../session/user_session.dart'; // ✅ ADDED
-import '../dashboard/student_dashboard.dart'; // ✅ ADDED
-import '../dashboard/teacher_dashboard.dart'; // ✅ ADDED
+import '../dashboard/signupdash/student_dashboard.dart'; // ✅ ADDED
+import '../dashboard/signupdash/teacher_dashboard.dart'; // ✅ ADDED
 
 // ─────────────────────────────────────────────
 //  SCREEN 3 — Secure & Reliable
