@@ -1,0 +1,28 @@
+<svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" width="160" height="160">
+  <!-- Folder body (dark blue) -->
+  <rect x="10" y="55" width="140" height="90" rx="12" fill="#3B4FD8"/>
+  <!-- Folder tab -->
+  <path d="M10 55 Q10 40 25 40 L65 40 Q75 40 80 50 L90 60 L10 60 Z" fill="#3B4FD8"/>
+  <!-- Folder front face (lighter purple) -->
+  <rect x="10" y="62" width="140" height="83" rx="12" fill="#5B6EF5"/>
+  <!-- Heart on folder -->
+  <path d="M80 108 C80 108 65 97 65 88 C65 83 69 79 74 79 C77 79 80 82 80 82 C80 82 83 79 86 79 C91 79 95 83 95 88 C95 97 80 108 80 108 Z" fill="white" opacity="0.85"/>
+  <!-- Paper 1 (back) -->
+  <rect x="88" y="28" width="38" height="48" rx="5" fill="white" opacity="0.7" transform="rotate(8 107 52)"/>
+  <!-- Paper 2 (front) -->
+  <rect x="78" y="22" width="38" height="50" rx="5" fill="white" opacity="0.95" transform="rotate(-4 97 47)"/>
+  <!-- Lines on paper -->
+  <line x1="86" y1="35" x2="108" y2="33" stroke="#CCCCEE" stroke-width="2.5" stroke-linecap="round" transform="rotate(-4 97 47)"/>
+  <line x1="86" y1="42" x2="112" y2="40" stroke="#CCCCEE" stroke-width="2.5" stroke-linecap="round" transform="rotate(-4 97 47)"/>
+  <line x1="86" y1="49" x2="106" y2="47" stroke="#CCCCEE" stroke-width="2.5" stroke-linecap="round" transform="rotate(-4 97 47)"/>
+  <!-- Sparkles -->
+  <g fill="#A0AAFF" opacity="0.9">
+    <!-- top left sparkle -->
+    <polygon points="22,20 24,16 26,20 30,22 26,24 24,28 22,24 18,22" transform="scale(0.7) translate(12,10)"/>
+    <!-- top right sparkle -->
+    <polygon points="22,20 24,16 26,20 30,22 26,24 24,28 22,24 18,22" transform="scale(0.55) translate(195,8)"/>
+    <!-- right sparkle small -->
+    <circle cx="148" cy="42" r="3" fill="#C0C8FF" opacity="0.8"/>
+    <circle cx="15" cy="52" r="2.5" fill="#C0C8FF" opacity="0.7"/>
+  </g>
+</svg>

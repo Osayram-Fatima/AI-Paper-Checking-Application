@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'code/welcome/welcome_screen.dart'; // Import your custom screen
-import 'code/onboarding/onboarding_screen1.dart';
-import 'code/signup/signup.dart';
+import 'code/frontend/welcome/welcome_screen.dart';
+import 'code/frontend/class_screen/class_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,13 +13,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'AI Paper Checking App',
-      theme: ThemeData(
-        // Set a default theme, but we'll mostly use custom colors
-        primarySwatch: Colors.blue,
-        useMaterial3: true,
-      ),
-      home: const SignupScreen(), // Set your custom screen as the home
-      debugShowCheckedModeBanner: false, // Hide the debug banner
+      theme: ThemeData(primarySwatch: Colors.blue, useMaterial3: true),
+
+      // ✅ Correct screen
+      home: const SelectClassScreen(),
+
+      debugShowCheckedModeBanner: false,
     );
   }
 }
