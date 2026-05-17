@@ -8,6 +8,7 @@ class UserSession {
   static String token = '';
   static int userId = 0;
   static String? profileImage; // ✅ YEH ADD KARO
+  static const String _base = 'http://10.0.2.2:3000';
 
   static void clear() {
     firstName = '';
